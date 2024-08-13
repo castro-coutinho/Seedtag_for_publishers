@@ -1,0 +1,86 @@
+
+
+function fetchAllData() {
+// 1. Obtain the Access Token
+  var apiKey = "YOUR_API_KEY"; // API Token, YOUR. 
+  var tokenResponse = UrlFetchApp.fetch('https://publishers.api.seedtag.com/token?api_key=' + apiKey, {
+    method: 'GET',
+    muteHttpExceptions: true
+  });
+
+  if (tokenResponse.getResponseCode() !== 200) {
+    Logger.log("Failed to get access token: " + tokenResponse.getContentText());
+    return;
+  }
+
+  var tokenData = JSON.parse(tokenResponse.getContentText());
+  var accessToken = tokenData.accessToken;
+
+   // 2. set start and end dates
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = spreadsheet.getSheetByName("SeedTag"); // Name of the tab, YOUR.
+  var lastRow = sheet.getLastRow();
+  var lastDate = sheet.getRange(lastRow, 1).getValue();  // Where the last date is taken
+  Logger.log("Last date in master sheet: " + lastDate);
+
+  // Calculate yesterday's date
+  var today = new Date();
+  var yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+  var endDate = yesterday.toISOString().split('T')[0];
+
+  // Check if the last date is the same as yesterday's date
+  if (lastDate.toISOString().split('T')[0] === endDate) {
+    Logger.log("No new data to update. The last date is the same as yesterday.");
+    return;
+  }
+
+  // Set the start date to the day after the last date
+  var startDate = new Date(lastDate);
+  startDate.setDate(startDate.getDate() + 1);
+  var startDateString = startDate.toISOString().split('T')[0];
+
+  // 3. report request
+  var reportOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken,
+      'Content-Type': 'application/json'
+    },
+    payload: JSON.stringify({
+      "startDate": startDateString,
+      "endDate": endDate,
+      "pageNum": 0,
+      "pageSize": 1000, // Adjust the number of lines, you can define
+      "splits": ["day", "month", "publisherId", "currency"],
+      "filters": [{"key": "publisherId", "operation": "eq", "value": "ID_DO_PUBLISHER_HERE"}] // Publisher ID, the last data is a variable. YOUR.
+    }),
+    muteHttpExceptions: true
+  };
+
+  var reportResponse = UrlFetchApp.fetch('https://publishers.api.seedtag.com/report', reportOptions);
+  var reportData = JSON.parse(reportResponse.getContentText());
+
+  // 4. filling in the spreadsheet
+  var reportRows = reportData.data.map(function(item) {
+    return [
+      item._id.day,  // date
+      "nome_legivel_do_publisher_aqui",  // publisher //// Variable filter, we replace it with this name to be readable. YOUR.
+      item.revenue,  // revenue
+      item._id.currency,  // currency
+      item.impressions,  // impressions
+      item.clicks  // clicks
+    ];
+  });
+
+  // Ordenar por data
+  reportRows.sort(function(a, b) {
+    return new Date(a[0]) - new Date(b[0]);
+  });
+
+  // Inserir dados na planilha
+  var newRange = sheet.getRange(lastRow + 1, 1, reportRows.length, reportRows[0].length);
+  newRange.setValues(reportRows);
+
+  Logger.log("Data updated to: " + endDate);
+}
