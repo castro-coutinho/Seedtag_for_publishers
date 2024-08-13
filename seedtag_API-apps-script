@@ -73,12 +73,12 @@ function fetchAllData() {
     ];
   });
 
-  // Ordenar por data
+  // Sort by date
   reportRows.sort(function(a, b) {
     return new Date(a[0]) - new Date(b[0]);
   });
 
-  // Inserir dados na planilha
+ // Insert data into the spreadsheet
   var newRange = sheet.getRange(lastRow + 1, 1, reportRows.length, reportRows[0].length);
   newRange.setValues(reportRows);
 
