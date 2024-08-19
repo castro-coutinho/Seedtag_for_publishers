@@ -12,7 +12,10 @@ A requisição à API é totalmente gratuita. Não há necessidade de servidores
 
 # O que preciso saber ?
 Insira os dados nas linhas marcadas com o comentário 'YOUR'.
+
 Precisa do API/Token? Solicite pelo e-mail publishersbrazil@seedtag.com.
+
 Dúvidas sobre configuração? Entre em contato via LinkedIn: https://www.linkedin.com/in/lucas-mcoutinho-/
+
 É necessário configurar um trigger para o funcionamento adequado do código; o processo é simples (imagem abaixo).
 ![Trigger_config_tutorial](https://github.com/user-attachments/assets/13802269-f4c6-4a2a-9fd2-565d6b31c36a)
