@@ -2,7 +2,7 @@
 Script criado com base na documentação da API Report-Seedtag para automatizar a atualização diária dos dados dos publishers no Google Sheets, utilizando Google Apps Script.
 
 # Sobre o Script
-Esse script é exclusivo para publishers PARCEIROS SEEDTAG !
+Esse script é exclusivo para publisher PARCEIRO SEEDTAG !
 
 # Para NÃO desenvolvedores
 O script foi estruturado de forma acessível para profissionais que não possuem familiaridade com scripts. A intenção é permitir que qualquer pessoa compreenda o que está acontecendo, sem exigir conhecimento avançado de programação.
