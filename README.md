@@ -1,5 +1,5 @@
 # for_publishers
-Script criado com base na documentação da API Report-Seedtag para automatizar a atualização diária dos dados dos publishers no Google Sheets, utilizando Google Apps Script.
+Script desenvolvido para automatizar a atualização diária do desempenho dos publishers. A solução utiliza Google Sheets e Google Apps Script, ferramentas gratuitas e amplamente acessíveis
 
 # Sobre o Script
 Esse script é exclusivo para publisher PARCEIRO SEEDTAG !
