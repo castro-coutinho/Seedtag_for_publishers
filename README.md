@@ -1,5 +1,5 @@
 # for_publishers
-Script desenvolvido para automatizar a atualização diária do desempenho dos publishers. A solução utiliza Google Sheets e Google Apps Script, ferramentas gratuitas e amplamente acessíveis
+Script criado para atualizar diariamente o desempenho dos publishers, utilizando Google Sheets e Google Apps Script, ferramentas gratuitas e acessíveis.
 
 # Sobre o Script
 Esse script é exclusivo para publisher PARCEIRO SEEDTAG !
