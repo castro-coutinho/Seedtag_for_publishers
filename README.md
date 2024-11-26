@@ -8,10 +8,10 @@ Esse script é exclusivo para publisher PARCEIRO SEEDTAG !
 O script foi estruturado de forma acessível para profissionais que não possuem familiaridade com scripts. A intenção é permitir que qualquer pessoa compreenda o que está acontecendo, sem exigir conhecimento avançado de programação.
 
 # Benefícios do script
-A requisição à API é totalmente gratuita. Não há necessidade de servidores ou estruturas complexas para acompanhar o desempenho do website.
+A requisição à API é totalmente gratuita. Não há necessidade de servidores ou estruturas complexas para acompanhar o desempenho de suas métricas. 
 
 # O que preciso saber ?
-Insira os dados nas linhas marcadas com o comentário 'YOUR'.
+Insira SEUS dados nas linhas marcadas com o comentário 'YOUR'.
 
 Possui dúvidas sobre configuração e ou Precisa do API/Token?
 Entre em contato via LinkedIn: https://www.linkedin.com/in/lucas-mcoutinho-/
