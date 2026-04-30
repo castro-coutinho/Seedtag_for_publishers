@@ -1,3 +1,5 @@
+#Deprecated
+
 # for_publishers
 Script criado para atualizar diariamente o desempenho dos publishers, utilizando Google Sheets e Google Apps Script, ferramentas gratuitas e acessíveis.
 
